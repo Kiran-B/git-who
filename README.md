@@ -36,7 +36,7 @@ make build
 make install   # copies binary to /usr/local/bin
 ```
 
-Requires Go 1.23+.
+Requires Go 1.25+.
 
 ---
 
