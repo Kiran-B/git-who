@@ -1,0 +1,16 @@
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# macOS
+.DS_Store
+._*
+
+# Project
+bin/
