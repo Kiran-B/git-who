@@ -10,10 +10,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// Version is overridden at release time via -ldflags.
+var Version = "dev"
+
 var rootCmd = &cobra.Command{
-	Use:   "git-who",
-	Short: "Manage and switch Git identities per repository",
-	RunE:  runRoot,
+	Use:     "git-who",
+	Short:   "Manage and switch Git identities per repository",
+	Version: Version,
+	RunE:    runRoot,
 }
 
 func Execute() error {
