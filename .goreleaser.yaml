@@ -1,0 +1,52 @@
+version: 2
+
+project_name: git-who
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: ./cmd/git-who
+    binary: git-who
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X github.com/Kiran-B/git-who/internal/cmd.Version={{.Version}}
+
+archives:
+  - formats: [tar.gz]
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^chore:'
+      - '^ci:'
+      - '^test:'
+
+brews:
+  - name: git-who
+    repository:
+      owner: Kiran-B
+      name: git-who
+      branch: main
+      token: '{{ .Env.GITHUB_TOKEN }}'
+    directory: Formula
+    homepage: https://github.com/Kiran-B/git-who
+    description: Quickly switch Git identities (name, email, SSH key, GPG key) per repo
+    commit_msg_template: 'chore: update Homebrew formula for {{ .Tag }}'
+    install: |
+      bin.install "git-who"
+    test: |
+      assert_match version.to_s, shell_output("#{bin}/git-who --version")
