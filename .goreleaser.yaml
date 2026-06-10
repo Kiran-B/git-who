@@ -45,6 +45,7 @@ brews:
     directory: Formula
     homepage: https://github.com/Kiran-B/git-who
     description: Quickly switch Git identities (name, email, SSH key, GPG key) per repo
+    license: MIT
     commit_msg_template: 'chore: update Homebrew formula for {{ .Tag }}'
     install: |
       bin.install "git-who"
