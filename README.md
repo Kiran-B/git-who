@@ -21,11 +21,15 @@ Git doesn't know who you are. You do. But remembering to set `user.name`, `user.
 
 ## Installation
 
-### Homebrew _(coming soon)_
+### Homebrew (macOS and Linux)
 
 ```sh
-brew install git-who
+brew tap kiran-b/git-who https://github.com/Kiran-B/git-who
+brew install kiran-b/git-who/git-who
 ```
+
+> The fully-qualified name matters: homebrew-core ships an unrelated tool also
+> named `git-who`, so a bare `brew install git-who` installs that one instead.
 
 ### Build from source
 
@@ -147,5 +151,5 @@ All changes are **local to the current repository**. Your global `~/.gitconfig` 
 - [ ] `git who use <profile> --global` — apply profile globally
 - [ ] `git who current` — machine-readable output (JSON)
 - [ ] Shell completions (zsh, bash, fish)
-- [ ] Homebrew tap
+- [x] Homebrew tap (this repo doubles as the tap)
 - [ ] Auto-apply profile based on repo remote URL pattern
